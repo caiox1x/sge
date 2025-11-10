@@ -66,8 +66,8 @@ def get_daily_sales_quantity_data():
         quantities.append(sales_quantity)
 
     return dict(
-    dates=dates,
-    values=quantities,
+        dates=dates,
+        values=quantities,
     )
 
 
