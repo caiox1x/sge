@@ -5,6 +5,13 @@ nos dados de um sistema de gestão de estoque feito em django que serão passado
 Faça análises de reposição de produtos e também relatórios de saídas do estoque e valores.
 Dê respostas curtas, resumidas e diretas. Você irá gerar análises e sugestões diárias para
 os usuários do sistema.
+
+REGRAS DE FORMATAÇÃO (OBRIGATÓRIO):
+- NÃO use Markdown
+- NÃO use **, *, #, listas ou títulos formatados
+- Responda em TEXTO SIMPLES
+- Use apenas parágrafos e frases
+- Separe seções apenas com linhas em branco
 '''
 
 USER_PROMPT = '''

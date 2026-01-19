@@ -11,9 +11,9 @@ from outflows.models import Outflow
 
 class SGEAgent:
 
-    def __init__(self):
-        self.__client = genai.Client(
-            api_key=settings.GEMINI_API_KEY,
+    def __init__(self): 
+        self.__client = genai.Client( 
+            api_key=settings.GEMINI_API_KEY, 
         )
 
     def __get_data(self):
@@ -25,16 +25,19 @@ class SGEAgent:
         })
 
     def invoke(self):
-        response = client.models.generate_content_stream(
-            model=GEMINI_MODEL,
+        stream = self.__client.models.generate_content_stream(
+            model=settings.GEMINI_MODEL,
             contents=prompts.USER_PROMPT.replace('{{data}}', self.__get_data()),
             config=types.GenerateContentConfig(
                 system_instruction=prompts.SYSTEM_PROMPT,
                 temperature=0.1,
                 top_p=0.8,
-                # max_output_tokens=600,
             )
         )
-        result = response.text
-        models.AiResult.objects.create(result=result)
-        
+
+        result = []
+        for chunk in stream:
+            if chunk.text:
+                result.append(chunk.text)
+
+        models.AiResult.objects.create(result="".join(result))
