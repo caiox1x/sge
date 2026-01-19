@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'products',
     'inflows',
     'outflows',
+    'ai',
 ]
 
 LOGIN_URL = 'login'
@@ -156,3 +157,6 @@ SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(days=1),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
 }
+
+GEMINI_MODEL = os.environ.get('GEMINI_MODEL')
+GEMINI_API_KEY = os.environ.get('GEMINI_API_KEY')
